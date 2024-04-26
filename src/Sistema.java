@@ -5,10 +5,11 @@ public class Sistema {
         System.out.println("1) Cadastrar Mamifero");
         System.out.println("2) Cadastrar Ave");
         System.out.println("3) Cadastrar Reptil");
-        System.out.println("4) Procurar Animal");
-        System.out.println("5) Listar Todos os Animais");
-        System.out.println("6) Excluir um animal da lista");
-        System.out.println("7) Excluir todos os animais da lista");
+        System.out.println("4) Cadastrar Peixe");
+        System.out.println("5) Procurar Animal ");
+        System.out.println("6) Listar Todos os Animais");
+        System.out.println("7) Excluir um animal da lista");
+        System.out.println("8) Excluir todos os animais da lista");
         System.out.println("0) Sair");
         System.out.println("\nDigite a opção: ");
     }
@@ -22,12 +23,13 @@ public class Sistema {
         String voa;
         String corEscama;
         String rabo;
+        String agua;
 
         switch (op) {
             case 1:
 
-                System.out.println("\nNovo Animal:");
-                System.out.println("Id do animal: ");
+                System.out.println("\nNovo Mamifero:");
+                System.out.println("Id do mamifero: ");
                 id = Console.lerInt();
                 System.out.println("Nome");
                 nome = Console.lerString();
@@ -98,6 +100,29 @@ public class Sistema {
 
                 break;
             case 4:
+                System.out.println("\nNovo Peixe");
+                System.out.println("Id do peixe: ");
+                id = Console.lerInt();
+
+                System.out.println("Nome: ");
+                nome = Console.lerString();
+
+                System.out.println("Comida: ");
+                comida = Console.lerString();
+
+                System.out.println("Se tem patas, quantas? ");
+                quantasPatas = Console.lerInt();
+
+                System.out.println("Agua doce ou salgada? ");
+                agua = Console.lerString();
+
+                Peixe p = new Peixe(id, nome, comida, quantasPatas, agua);
+                Cadastro.cadastrar(p);
+
+                System.out.println("Peixe cadastrado com sucesso");
+
+                break;
+            case 5:
 
                 System.out.println("\nProcurar Animal:");
 
@@ -117,7 +142,7 @@ public class Sistema {
 
                 break;
 
-            case 5:
+            case 6:
 
                 System.out.println("\nListar todos os animais cadastrados: ");
 
@@ -130,27 +155,27 @@ public class Sistema {
                     System.out.println(temp.toString());
 
                 break;
-            case 6:
-  
-            System.out.println("\nId do animal que deseja excluir: ");
-            id = Console.lerInt();
 
-            Animal buscarAnimal = Cadastro.buscar(id);
-            if (buscarAnimal != null) {
-            
-                for (Animal temp : Cadastro.GetListaAnimais()) {
-                    Cadastro.excluir(buscarAnimal);
-                    System.out.println("\nAnimal excluido com sucesso");
+            case 7:
 
-                    return;
-            }}
+                System.out.println("\nId do animal que deseja excluir: ");
+                id = Console.lerInt();
+
+                Animal buscarAnimal = Cadastro.buscar(id);
+                if (buscarAnimal != null) {
+
+                    for (Animal temp : Cadastro.GetListaAnimais()) {
+                        Cadastro.excluir(buscarAnimal);
+                        System.out.println("\nAnimal excluido com sucesso");
+
+                        return;
+                    }
+                }
 
                 System.out.println("\nAnimal com o id: " + id + " não foi encontrado");
-            
-        
 
-            break;
-            case 7:
+                break;
+            case 8:
                 if (Cadastro.GetListaAnimais().size() == 0) {
                     System.out.println("Não há animais para excluir");
                     return;

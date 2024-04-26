@@ -48,6 +48,6 @@ public class Animal {
 
     @Override
     public String toString() {
-        return "\nAnimal " + "\nNome: " + nome + "\nComida: " + comida + "\nPatas: " + patas;
+        return "\nAnimais " + "\nNome: " + nome + "\nComida: " + comida + "\nPatas: " + patas;
     }
 }
